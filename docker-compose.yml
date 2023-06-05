@@ -6,7 +6,7 @@ services:
     command: -c /etc/chirpstack
     restart: unless-stopped
     volumes:
-      - ./configuration/chirpstack:/etc/chirpstack
+      - ./configuration/chirpstack/region_as923.toml:/etc/chirpstack/region_as923.toml
       - ./lorawan-devices:/opt/lorawan-devices
     depends_on:
       - postgres
@@ -19,7 +19,7 @@ services:
     ports:
       - 8080:8080
 
-  chirpstack-gateway-bridge-eu868:
+  chirpstack-gateway-bridge-as923:
     image: chirpstack/chirpstack-gateway-bridge:4
     restart: unless-stopped
     ports:
